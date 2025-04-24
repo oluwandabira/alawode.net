@@ -4,142 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alawode's</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    
-    body, html {
-      height: 100%;
-      overflow: hidden;
-    }
-    
-    .container {
-      display: flex;
-      height: 100vh;
-      width: 100vw;
-    }
-    
-    .person {
-      flex: 1;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.5s ease;
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 2rem;
-      color: white;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-    }
-    
-    .person::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 100%);
-      z-index: 1;
-      transition: all 0.5s ease;
-    }
-    
-    .container:hover .person:not(:hover) {
-      flex: 0.5;
-    }
-    
-    .container:hover .person:not(:hover)::before {
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 100%);
-    }
-    
-    .container:hover .person:hover {
-      flex: 2;
-    }
-    
-    .person-content {
-      position: relative;
-      z-index: 2;
-      transform: translateY(50px);
-      opacity: 0.8;
-      transition: all 0.5s ease;
-    }
-    
-    .person:hover .person-content {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    
-    .firstname {
-      font-size: 2rem;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-    }
-    
-    .fullname {
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.5s ease;
-    }
-    
-    .person:hover .fullname {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    .social-links {
-      display: flex;
-      gap: 1rem;
-    }
-    
-    .social-icon {
-      width: 32px;
-      height: 32px;
-      background-color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      opacity: 0;
-      transform: translateY(20px);
-      transition-delay: calc(var(--i) * 0.1s);
-    }
-    
-    .person:hover .social-icon {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    .social-icon:hover {
-      transform: translateY(-5px) scale(1.1);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-    
-    .social-icon svg {
-      width: 18px;
-      height: 18px;
-      fill: #333;
-    }
-    
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-      }
-      
-      .container:hover .person:not(:hover) {
-        flex: 0.3;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="index.css" type="text/css">
 </head>
 <body>
   <!-- SVG Definitions for reuse -->
@@ -179,10 +44,11 @@
       <symbol id="icon-linkedin-circle" viewBox="0 0 24 24">
         <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z"/>
       </symbol>
- 	<!-- WordPress Icon -->
-  	<symbol id="icon-wordpress" viewBox="0 0 24 24">
-    	<path d="M21.469 6.825c.84 1.537 1.318 3.3 1.318 5.175 0 3.979-2.156 7.456-5.363 9.325l3.295-9.527c.615-1.54.82-2.771.82-3.864 0-.405-.026-.78-.07-1.109m-7.981.105c.647-.03 1.232-.105 1.232-.105.582-.075.514-.93-.067-.899 0 0-1.755.135-2.88.135-1.064 0-2.85-.15-2.85-.15-.585-.03-.661.855-.075.885 0 0 .54.061 1.125.09l1.68 4.605-2.37 7.08L5.354 6.9c.649-.03 1.234-.1 1.234-.1.585-.075.516-.93-.065-.896 0 0-1.746.138-2.874.138-.2 0-.438-.008-.69-.015C4.911 3.15 8.235 1.215 12 1.215c2.809 0 5.365 1.072 7.286 2.833-.046-.003-.091-.009-.141-.009-1.06 0-1.812.923-1.812 1.914 0 .89.513 1.643 1.06 2.531.411.72.89 1.643.89 2.977 0 .915-.354 1.994-.821 3.479l-1.075 3.585-3.9-11.61.001.014zM12 22.784c-1.059 0-2.081-.153-3.048-.437l3.237-9.406 3.315 9.087c.024.053.05.101.078.149-1.12.393-2.325.609-3.582.609M1.211 12c0-1.564.336-3.05.935-4.39L7.29 21.709C3.694 19.96 1.212 16.271 1.211 12M12 0C5.385 0 0 5.385 0 12s5.385 12 12 12 12-5.385 12-12S18.615 0 12 0"/>
-  	</symbol>
+
+      <!-- WordPress Icon -->
+      <symbol id="icon-wordpress" viewBox="0 0 24 24">
+        <path d="M21.469 6.825c.84 1.537 1.318 3.3 1.318 5.175 0 3.979-2.156 7.456-5.363 9.325l3.295-9.527c.615-1.54.82-2.771.82-3.864 0-.405-.026-.78-.07-1.109m-7.981.105c.647-.03 1.232-.105 1.232-.105.582-.075.514-.93-.067-.899 0 0-1.755.135-2.88.135-1.064 0-2.85-.15-2.85-.15-.585-.03-.661.855-.075.885 0 0 .54.061 1.125.09l1.68 4.605-2.37 7.08L5.354 6.9c.649-.03 1.234-.1 1.234-.1.585-.075.516-.93-.065-.896 0 0-1.746.138-2.874.138-.2 0-.438-.008-.69-.015C4.911 3.15 8.235 1.215 12 1.215c2.809 0 5.365 1.072 7.286 2.833-.046-.003-.091-.009-.141-.009-1.06 0-1.812.923-1.812 1.914 0 .89.513 1.643 1.06 2.531.411.72.89 1.643.89 2.977 0 .915-.354 1.994-.821 3.479l-1.075 3.585-3.9-11.61.001.014zM12 22.784c-1.059 0-2.081-.153-3.048-.437l3.237-9.406 3.315 9.087c.024.053.05.101.078.149-1.12.393-2.325.609-3.582.609M1.211 12c0-1.564.336-3.05.935-4.39L7.29 21.709C3.694 19.96 1.212 16.271 1.211 12M12 0C5.385 0 0 5.385 0 12s5.385 12 12 12 12-5.385 12-12S18.615 0 12 0"/>
+      </symbol>
     </defs>
   </svg>
 
@@ -221,14 +87,9 @@
               <use href="#icon-linkedin"></use>
             </svg>
           </div>
-          <div class="social-icon" style="--i: 2">
+          <a href="https://emi.alawode.net" class="social-icon" style="--i: 2">
             <svg>
-              <use href="#icon-twitter"></use>
-            </svg>
-          </div>
-          <div class="social-icon" style="--i: 3">
-            <svg>
-              <use href="#icon-linkedin-circle"></use>
+              <use href="#icon-wordpress"></use>
             </svg>
           </div>
         </div>
@@ -240,21 +101,11 @@
         <h2 class="firstname">Kewa</h2>
         <h3 class="fullname">Fiyikewa Alawode</h3>
         <div class="social-links">
-          <div class="social-icon" style="--i: 1">
+          <a href="https://github.com/itsjustkewa" class="social-icon" style="--i: 2">
             <svg>
-              <use href="#icon-facebook"></use>
+              <use href="#icon-github"></use>
             </svg>
-          </div>
-          <div class="social-icon" style="--i: 2">
-            <svg>
-              <use href="#icon-youtube"></use>
-            </svg>
-          </div>
-          <div class="social-icon" style="--i: 3">
-            <svg>
-              <use href="#icon-instagram"></use>
-            </svg>
-          </div>
+          </a>
         </div>
       </div>
     </div>
@@ -264,21 +115,11 @@
         <h2 class="firstname">Dabira</h2>
         <h3 class="fullname">Oluwandabira Alawode</h3>
         <div class="social-links">
-          <div class="social-icon" style="--i: 1">
-            <svg>
-              <use href="#icon-linkedin-circle"></use>
-            </svg>
-          </div>
           <a href="https://github.com/oluwandabira" class="social-icon" style="--i: 2">
             <svg>
               <use href="#icon-github"></use>
             </svg>
           </a>
-          <div class="social-icon" style="--i: 3">
-            <svg>
-              <use href="#icon-twitter"></use>
-            </svg>
-          </div>
         </div>
       </div>
     </div>
